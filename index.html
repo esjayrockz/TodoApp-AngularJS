@@ -15,13 +15,19 @@
     <p>Your Todos:</p>
     <button ng-bind="Ctrl.editButtonText" ng-click="Ctrl.editButton()"></button>
 
-    <ol ng-if="Ctrl.showList">
-      <li ng-repeat="element in Ctrl.toDoList">{{element}} <button ng-click="Ctrl.deleteListElement(element)">Delete</button></li>
+    <ol>
+      <li ng-repeat="element in Ctrl.toDoList track by $index">
+        <span ng-bind="element" ng-show="Ctrl.showList"></span>
+        <input ng-model="element" ng-hide="Ctrl.showList">
+        <button ng-click="Ctrl.deleteListElement($index)" ng-show="Ctrl.showList">Delete</button>
+      </li>
+    </ol>
+    <ol>
+      <li ng-repeat="element in Ctrl.newList track by $index">
+        <span ng-bind="element"></span>
+        </li>
     </ol>
 
-    <ol ng-if="!Ctrl.showList">
-      <li ng-repeat="element in Ctrl.toDoList" ><input value="{{element}}" ng-model="Ctrl.toDoList[$index]"></li>
-    </ol>
 
   </body>
 </html>

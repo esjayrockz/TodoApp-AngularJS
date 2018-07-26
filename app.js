@@ -1,7 +1,6 @@
 var module = angular.module("todoApp", []);
 module.controller('TodoController', function(){
   this.showList = true;
-  this.listElement = '';
   this.toDoList = ['Learn Angular 1', 'Try out exercises', 'Visit Java Brains site', 'Learn more Angular'];
   this.editButtonText = 'Edit';
   this.editButton = function(){
@@ -24,9 +23,11 @@ module.controller('TodoController', function(){
     this.listElement='';
   }
 };
-  this.deleteListElement = function(element){
-    this.toDoList = this.toDoList.filter(function(each){
-      return each !== element;
-    });
+  this.deleteListElement = function(index){
+    // this.toDoList = this.toDoList.filter(function(each){
+    //   return each !== element;
+    // });
+    this.toDoList.splice(index, 1);
+
   }
 });
