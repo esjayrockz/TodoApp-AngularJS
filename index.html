@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html ng-app="todoApp">
+  <head>
+    <meta charset="utf-8">
+    <title>Todo App</title>
+    <script src="./node_modules/angular/angular.js"></script>
+    <script src="app.js"></script>
+
+  </head>
+  <body ng-controller="TodoController as Ctrl">
+    <h1>Todo App</h1>
+    <p>Add a Todo:</p>
+    <p><input type="text" ng-model="Ctrl.listElement"></p>
+    <button ng-click="Ctrl.addToList()">Add</button>
+    <p>Your Todos:</p>
+    <button ng-bind="Ctrl.editButtonText" ng-click="Ctrl.editButton()"></button>
+
+    <ol ng-if="Ctrl.showList">
+      <li ng-repeat="element in Ctrl.toDoList">{{element}} <button ng-click="Ctrl.deleteListElement(element)">Delete</button></li>
+    </ol>
+
+    <ol ng-if="!Ctrl.showList">
+      <li ng-repeat="element in Ctrl.toDoList" ><input value="{{element}}" ng-model="Ctrl.toDoList[$index]"></li>
+    </ol>
+
+  </body>
+</html>
